@@ -8,36 +8,37 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+public class RecycleViewAdapter extends RecyclerView.Adapter<CrimeRowViewHolder> {
 
-public class RecycleViewAdapter extends RecyclerView.Adapter<FishRowViewHolder> {
+    CrimeFirebaseData crimeDataSource;
 
-    FishFirebaseData fishDataSource;
-
-    RecycleViewAdapter (FishFirebaseData fishDataSource) {
-        this.fishDataSource = fishDataSource;
+    RecycleViewAdapter (CrimeFirebaseData crimeDataSource) {
+        this.crimeDataSource = crimeDataSource;
     }
 
     @NonNull
     @Override
-    public FishRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CrimeRowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fish_row_layout, parent, false);
-        FishRowViewHolder holder = new FishRowViewHolder(view);
+        CrimeRowViewHolder holder = new CrimeRowViewHolder(view);
         return holder;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull FishRowViewHolder holder, int position) {
-        Fish fish = fishDataSource.getFish(position);
-        Log.d("CIS 3334", "RecycleViewAdapter: Display fish of "+fish);
-        String species = fish.getSpecies();
-        holder.textViewSpecies.setText(species);
-        holder.textViewWeight.setText(fish.getWeightInOz());
-        holder.textViewDate.setText(fish.getDateCaught());
 
-        if (species.toLowerCase().contains("bass")) {
+
+    @Override
+    public void onBindViewHolder(@NonNull CrimeRowViewHolder holder, int position) {
+        Crime crime = crimeDataSource.getCrime(position);
+        Log.d("CIS 3334", "RecycleViewAdapter: Display crime of "+crime);
+        String description = crime.getDescription();
+        holder.textViewDesc.setText(description);
+        holder.textViewLocation.setText(crime.getLocation());
+        holder.textViewTime.setText(crime.getTime());
+        holder.textViewDate.setText(crime.getDate());
+
+        /* if (species.toLowerCase().contains("bass")) {
             holder.imageViewFishIcon.setImageResource(R.drawable.largemouth);
         } else if (species.toLowerCase().contains("walleye")) {
             holder.imageViewFishIcon.setImageResource(R.drawable.walleye);
@@ -46,11 +47,13 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<FishRowViewHolder> 
         } else {
             holder.imageViewFishIcon.setImageResource(R.drawable.fish);
         }
+
+         */
     }
 
     @Override
     public int getItemCount() {
-        Log.d("CIS 3334", "RecycleViewAdapter: getItemCount = "+fishDataSource.getNumberOfFish());
-        return fishDataSource.getNumberOfFish();
+        Log.d("CIS 3334", "RecycleViewAdapter: getItemCount = "+crimeDataSource.getNumberOfCrimes());
+        return crimeDataSource.getNumberOfCrimes();
     }
 }

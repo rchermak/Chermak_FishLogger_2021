@@ -15,17 +15,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
-    Button buttonAddFish;
+    Button buttonAddCrime;
 
     RecyclerView recycleViewFish;
     RecycleViewAdapter recycleViewAdapter;
 
-    FishFirebaseData fishDataSource;
-    DatabaseReference myFishDbRef;
+    CrimeFirebaseData crimeDataSource;
+    DatabaseReference myCrimeDbRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +38,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupFirebaseDataChange() {
-        fishDataSource = new FishFirebaseData();
-        myFishDbRef = fishDataSource.open();
-        myFishDbRef.addValueEventListener(new ValueEventListener() {
+        crimeDataSource = new CrimeFirebaseData();
+        myCrimeDbRef = crimeDataSource.open();
+        myCrimeDbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("CIS3334", "Starting onDataChange()");        // debugging log
-                fishDataSource.updateFishList(dataSnapshot);
+                crimeDataSource.updateCrimeList(dataSnapshot);
                 recycleViewAdapter.notifyDataSetChanged();
             }
             @Override
@@ -59,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setupRecycleView() {
-        recycleViewFish = findViewById(R.id.recycleViewFish);
-        recycleViewAdapter = new RecycleViewAdapter(fishDataSource);
+        recycleViewFish = findViewById(R.id.recycleViewCrime);
+        recycleViewAdapter = new RecycleViewAdapter(crimeDataSource);
         recycleViewFish.setAdapter(recycleViewAdapter);
         recycleViewFish.setLayoutManager(new LinearLayoutManager(this));
         recycleViewAdapter.notifyDataSetChanged();
@@ -68,12 +66,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupButtonAddFish() {
         Log.d("CIS3334", "Starting setupButtonAddFish");        // debugging log
-        buttonAddFish = findViewById(R.id.buttonAddFish);
-        buttonAddFish.setOnClickListener(new View.OnClickListener() {
+        buttonAddCrime = findViewById(R.id.buttonAddCrime);
+        buttonAddCrime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Start up the add fish activity with an intent
-                Intent addActIntent = new Intent(v.getContext(), AddFishActivity.class);
+                Intent addActIntent = new Intent(v.getContext(), AddCrimeActivity.class);
                 //finish();
                 startActivity(addActIntent);
             }

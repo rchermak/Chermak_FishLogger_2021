@@ -1,62 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-tools:context=".AddFishActivity">
-
-<TextView
-    android:text="Enter Info on the Fish"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/textView2"
-    android:textSize="18sp" />
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddCrimeActivity">
 
-<TextView
-    android:text="Species of fish:"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/textView3" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Info on the Crime"
+        android:textSize="18sp" />
 
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="textPersonName"
-    android:ems="10"
-    android:id="@+id/editTextSpecies" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Location of Crime:" />
 
-<TextView
-    android:text="Weight "
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/textView4" />
+    <EditText
+        android:id="@+id/editTextLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="textPersonName"
-    android:ems="10"
-    android:id="@+id/editTextWeight" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description of Crime:" />
 
-<TextView
-    android:text="Date"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/textView5" />
+    <EditText
+        android:id="@+id/editTextDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="textPersonName"
-    android:ems="10"
-    android:id="@+id/editTextDate" />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time:" />
 
-<Button
-    android:text="Save Fish"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/buttonSave" />
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date:" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/buttonEnter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Crime" />
 
 </LinearLayout>

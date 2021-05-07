@@ -16,12 +16,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class AddFishActivity extends AppCompatActivity {
+public class AddCrimeActivity extends AppCompatActivity {
 
-    Button buttonSave;
-    EditText editTextSpecies, editTextWeight, editTextDate;
+    Button buttonEnter;
+    EditText editTextLocation, editTextDesc, editTextTime, editTextDate;
     Double latitude, longitude;
-    FishFirebaseData fishDataSource;
+    CrimeFirebaseData crimeDataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +29,13 @@ public class AddFishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_fish);
 
         // link each editText variable to the xml layout
-        editTextSpecies = (EditText) findViewById(R.id.editTextSpecies);
-        editTextWeight = (EditText) findViewById(R.id.editTextWeight);
+        editTextLocation = (EditText) findViewById(R.id.editTextLocation);
+        editTextDesc = (EditText) findViewById(R.id.editTextDesc);
+        editTextTime = (EditText) findViewById(R.id.editTextTime);
         editTextDate = (EditText) findViewById(R.id.editTextDate);
 
-        fishDataSource = new FishFirebaseData();
-        fishDataSource.open();
+        crimeDataSource = new CrimeFirebaseData();
+        crimeDataSource.open();
 
         getGPSLocation();
         setupSaveButton();
@@ -81,22 +82,24 @@ public class AddFishActivity extends AppCompatActivity {
 
         private void setupSaveButton() {
             // set up the button listener
-            buttonSave = (Button) findViewById(R.id.buttonSave);
-            buttonSave.setOnClickListener(new View.OnClickListener() {
+            buttonEnter = (Button) findViewById(R.id.buttonEnter);
+            buttonEnter.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     // Add the fish to the database
-                    String species = editTextSpecies.getText().toString();
-                    String weight = editTextWeight.getText().toString();
-                    String dateCaught = editTextDate.getText().toString();
+                    String location = editTextLocation.getText().toString();
+                    String description = editTextDesc.getText().toString();
+                    String time = editTextTime.getText().toString();
+                    String date = editTextDate.getText().toString();
                     if (latitude==null || latitude==0.0) {
                         // add fish without location since location is missing
                         Log.d("CIS 3334", "AddFishActivity -- Saving fish with no location");
-                        fishDataSource.createFish(species, weight, dateCaught);
+                        crimeDataSource.createCrime(date, time, location, description);
 
-                    } else {
+                    } /* else {
                         Log.d("CIS 3334", "AddFishActivity -- Saving fish with lat="+latitude.toString()+" and lon="+longitude.toString());
-                        fishDataSource.createFish(species, weight, dateCaught, latitude.toString(), longitude.toString());
+                        crimeDataSource.createCrime(date, time, location, description, latitude.toString(), longitude.toString());
                     }
+                    */
                     finish();
                 }
             });
