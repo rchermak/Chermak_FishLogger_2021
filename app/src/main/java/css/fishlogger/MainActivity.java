@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d("CIS3334", "Starting onCreate");        // debugging log
 
-        setupButtonAddFish();
+        setupButtonAddCrime();
         setupFirebaseDataChange();
         setupRecycleView();
 
@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         recycleViewAdapter.notifyDataSetChanged();
     }
 
-    private void setupButtonAddFish() {
-        Log.d("CIS3334", "Starting setupButtonAddFish");        // debugging log
+    private void setupButtonAddCrime() {
+        Log.d("CIS3334", "Starting setupButtonAddCrime");        // debugging log
         buttonAddCrime = findViewById(R.id.buttonAddCrime);
         buttonAddCrime.setOnClickListener(new View.OnClickListener() {
             @Override
